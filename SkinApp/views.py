@@ -9,7 +9,7 @@ import io
 import base64
 import numpy as np
 import cv2
-from keras.models import Sequential, load_model, Model
+from keras.models import load_model
 
 # Use the Agg backend for Matplotlib
 import matplotlib

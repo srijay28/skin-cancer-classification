@@ -80,16 +80,16 @@ WSGI_APPLICATION = 'Skin.wsgi.application'
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'skincancer_db',  # Your PostgreSQL database name
-        'USER': 'srijayketavarapu',  # Your PostgreSQL username
-        'PASSWORD': 'srijay2807',  # Your PostgreSQL password
-        'HOST': 'localhost',  # Or the IP address if hosted remotely
-        'PORT': '5432',  # Default PostgreSQL port
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'skincancer_db',  # Your PostgreSQL database name
+#         'USER': 'srijayketavarapu',  # Your PostgreSQL username
+#         'PASSWORD': 'srijay2807',  # Your PostgreSQL password
+#         'HOST': 'localhost',  # Or the IP address if hosted remotely
+#         'PORT': '5432',  # Default PostgreSQL port
+#     }
+# }
 
 
 # Password validation
