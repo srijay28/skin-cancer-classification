@@ -74,10 +74,20 @@ WSGI_APPLICATION = 'Skin.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'skincancer_db',  # Your PostgreSQL database name
+        'USER': 'srijayketavarapu',  # Your PostgreSQL username
+        'PASSWORD': 'srijay2807',  # Your PostgreSQL password
+        'HOST': 'localhost',  # Or the IP address if hosted remotely
+        'PORT': '5432',  # Default PostgreSQL port
     }
 }
 
