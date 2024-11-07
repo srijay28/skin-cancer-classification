@@ -1,0 +1,94 @@
+{% load static %}
+<!-- <html>
+<head>
+<title>Skin Lesion Detection System</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link href="{% static 'style.css' %}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="main">
+  <div class="main_resize">
+    <div class="header">
+      <div class="logo">
+        <h1><span>Dermatological mage Classification for Skin Lesion Detection using Deep Learning Techniques</span><small></small></h1>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content_bg">
+        <div class="menu_nav">
+         <ul>      
+     <li><a href="{% url 'Upload' %}"><font size="3" color="black">Upload Skin Image</a></li>
+	<li><a href="{% url 'index' %}"><font size="3" color="black">Logout</a></li>
+   </ul>          
+        </div>
+        <div class="hbg"><img src="{% static 'images/header_images.jpg' %}" width="915" height="286" alt="" /></div>
+
+		<font size="3" color="black"><center>{{ data|safe }}</center></font><br/>
+	<img src="data:image/png;base64, {{ img }}" alt="" />
+
+       
+  </body>
+</html> -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skin Lesion Classification</title>
+    <link href="{% static 'style1.css' %}" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="left-panel">
+        <div class="greeting">
+          <h1>Welcome to the Skin Lesion Classification System</h1>
+          <section class="instructions">
+            <h3>How to Use the System</h3>
+            <ol>
+              <li>
+                <strong>Upload a Skin Image:</strong> Click on the "Upload Skin
+                Image" button to choose and upload a photo of your skin lesion.
+                Make sure the image is clear and well-lit for accurate analysis.
+              </li>
+              <li>
+                <strong>Review Results:</strong> After uploading, our system
+                will process the image and provide you with a detailed analysis.
+                You can view the results and understand the classification
+                through the information displayed.
+              </li>
+              <li>
+                <strong>Logout:</strong> When you’re done, click on the "Logout"
+                button to securely end your session. This ensures that your data
+                and results remain confidential.
+              </li>
+            </ol>
+          </section>
+        </div>
+        <footer>
+          <p>© 2024 Skin Lesion Classification. All rights reserved.</p>
+        </footer>
+      </div>
+      <div class="right-panel">
+        <div class="login-box">
+          <button
+            type="button"
+            class="upload-btn"
+            onclick="window.location.href='{% url 'Upload' %}'"
+          >
+            Upload Skin Image
+          </button>
+          <button
+            type="button"
+            class="logout-btn"
+            onclick="window.location.href='{% url 'index' %}'"
+          >
+            Log Out
+          </button>
+          <font size="3" color="black"><center>{{ data|safe }}</center></font>
+          <img src="data:image/png;base64, {{ img }}" alt="" />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

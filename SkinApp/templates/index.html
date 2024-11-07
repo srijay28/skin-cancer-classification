@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link href="{% static 'style1.css' %}" rel="stylesheet" type="text/css"/>
+    <script language="javascript">
+        function validate(formObj)
+        {
+        if(formObj.t1.value.length==0)
+        {
+        alert("Please Enter Username");
+        formObj.t1.focus();
+        return false;
+        }
+        if(formObj.t2.value.length==0)
+        {
+        alert("Please Enter Password");
+        formObj.t2.focus();
+        return false;
+        }
+        formObj.actionUpdateData.value="update";
+        return true;
+        }
+    </script>
+        
+  </head>
+  <body>
+    <div class="container">
+      <div class="left-panel">
+        <div class="greeting">
+          <h1>Hello!<span class="wave">👋</span></h1>
+          <p>
+            Effortlessly diagnose and analyze skin lesions with advanced deep learning technology. Streamline your workflow and enhance diagnostic accuracy through our automated classification system.
+          </p>
+        </div>
+        <footer>
+          <p>© 2024 Skin Lesion Classification. All rights reserved.</p>
+        </footer>
+      </div>
+      <div class="right-panel">
+        <div class="login-box">
+          <h2>Welcome Back!</h2>
+          <p>
+            Don't have an account? <a href="#">Create a new account now</a>,
+            it's FREE! Takes less than a minute.
+          </p>
+          <form name="f1" method="post" action={% url 'UserLoginAction' %} onsubmit="return validate(this);">
+            {% csrf_token %}<br/>
+            <input type="username" name="t1" placeholder="Username" />
+            <input type="password" name="t2" placeholder="Password" />
+            <button type="submit" class="login-btn">Login Now</button>
+          </form>
+
+          <p><a href="#">Forget Password</a></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+

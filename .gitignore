@@ -1,0 +1,12 @@
+*.pyc
+__pycache__/
+db.sqlite3
+.env
+media/
+static/
+model/xception_weights.keras
+model/alexnet_weights.keras
+model/X.txt.npy
+model/vgg_weights.keras
+model/Y.txt.npy
+

@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skin Lesion Classification</title>
+    <link href="{% static 'style1.css' %}" rel="stylesheet" type="text/css" />
+    <script language="javascript">
+      function validate(formObj) {
+        if (formObj.t1.value.length == 0) {
+          alert("Please Upload Skin Image");
+          formObj.t1.focus();
+          return false;
+        }
+
+        formObj.actionUpdateData.value = "update";
+        return true;
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left-panel">
+        <div class="greeting">
+          <h1>Welcome to the Skin Lesion Classification System</h1>
+          <section class="instructions">
+            <h3>How to Use the System</h3>
+            <ol>
+              <li>
+                <strong>Upload a Skin Image:</strong> Click on the "Upload Skin
+                Image" button to choose and upload a photo of your skin lesion.
+                Make sure the image is clear and well-lit for accurate analysis.
+              </li>
+              <li>
+                <strong>Review Results:</strong> After uploading, our system
+                will process the image and provide you with a detailed analysis.
+                You can view the results and understand the classification
+                through the information displayed.
+              </li>
+              <li>
+                <strong>Logout:</strong> When you’re done, click on the "Logout"
+                button to securely end your session. This ensures that your data
+                and results remain confidential.
+              </li>
+            </ol>
+          </section>
+        </div>
+        <footer>
+          <p>© 2024 Skin Lesion Classification. All rights reserved.</p>
+        </footer>
+      </div>
+      <div class="right-panel">
+        <div class="login-box">
+          <form
+            name="f1"
+            method="post"
+            action="{% url 'UploadAction' %}"
+            enctype="multipart/form-data"
+            onsubmit="return validate(this);"
+          >
+            {% csrf_token %}
+            <h2>Upload Skin Image</h2>
+
+            <!-- Display the data -->
+            <div class="form-feedback">{{ data }}</div>
+
+            <!-- File upload and submit button -->
+            <div class="form-group">
+              <input
+                id="image-upload"
+                name="t1"
+                type="file"
+                class="form-input"
+              />
+            </div>
+
+            <button type="submit" class="submit-btn">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
