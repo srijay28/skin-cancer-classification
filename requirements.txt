@@ -1,8 +1,8 @@
-pip install Django
-pip install tensorflow
-pip install matplotlib
-pip install keras
-pip install opencv-python
-pip install numpy
-pip install h5py
-pip install gunicorn
+Django
+tensorflow
+matplotlib
+keras
+opencv-python
+numpy
+h5py
+gunicorn
