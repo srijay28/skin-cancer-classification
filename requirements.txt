@@ -1,9 +1,9 @@
 Django
 tensorflow
+whitenoise
 matplotlib
 keras
 opencv-python
 numpy
 h5py
 gunicorn
-whitenoise
