@@ -62,8 +62,8 @@ def UploadAction(request):
         image = request.FILES['t1']
         imagename = request.FILES['t1'].name
         fs = FileSystemStorage()
-        if os.path.exists('SkinApp/static/skin/'+imagename):
-            os.remove('SkinApp/static/skin/'+imagename)
+        # if os.path.exists('SkinApp/static/skin/'+imagename):
+        #     os.remove('SkinApp/static/skin/'+imagename)
         filename = fs.save('SkinApp/static/skin/'+imagename, image)
         img = predict('SkinApp/static/skin/'+imagename)
         
@@ -78,6 +78,7 @@ def UploadAction(request):
         
         # Pass the base64 image to the context
         context = {'data': 'Predicted Output:', 'img': img_b64}
+        os.remove('SkinApp/static/skin/'+imagename) #added this line
         return render(request, 'UserScreen.html', context)
 
 def UserLogin(request):
