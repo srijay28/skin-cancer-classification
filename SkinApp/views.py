@@ -59,7 +59,10 @@ def UserLogin(request):
 
 def index(request):
     if request.method == 'GET':
-       return render(request, 'index.html', {})
+        return render(request, 'index.html', {})
+    else:
+        return JsonResponse({"status": "error", "message": "Invalid request method"}, status=400)
+
 
 def Upload(request):
     if request.method == 'GET':
