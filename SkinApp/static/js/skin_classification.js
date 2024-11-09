@@ -133,6 +133,13 @@ async function predict() {
       "prediction-result"
     ).textContent = `Prediction: ${labels[maxIndex]} with confidence: ${score}`;
     console.log("after prediction");
+    const imageUrl = imageElement.getAttribute("src");
+    if (imageUrl) {
+      await fetch(`/delete_image?image_url=${encodeURIComponent(imageUrl)}`, {
+        method: "GET",
+      });
+      console.log("Image deleted from server after prediction.");
+    }
   } catch (error) {
     console.error("Error during prediction:", error);
   }
