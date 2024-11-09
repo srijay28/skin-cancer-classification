@@ -24,6 +24,9 @@ def UploadAction(request):
         # Pass the image URL to the client for TensorFlow.js processing
         context = {'image_url': image_url}
         return render(request, 'UserScreen.html', context)
+    
+    return JsonResponse({"status": "error", "message": "Invalid request method"}, status=400)
+
 def delete_image(request):
     print("delete_image called")
     image_url = request.GET.get("image_url")
