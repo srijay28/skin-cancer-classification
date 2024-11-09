@@ -7,5 +7,7 @@ model/xception_weights.keras
 model/alexnet_weights.keras
 model/X.txt.npy
 model/Y.txt.npy
+model/vgg_weights.keras
+model/vgg_best_model.h5
 /venv
 
