@@ -9,4 +9,5 @@ model/X.txt.npy
 model/Y.txt.npy
 /venv
 model/vgg_best_model.h5
+.ipynb_checkpoints/
 
