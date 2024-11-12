@@ -7,4 +7,4 @@ opencv-python
 numpy
 h5py
 asgiref
-dahpne
+daphne
