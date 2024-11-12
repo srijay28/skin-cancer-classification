@@ -6,6 +6,5 @@ keras
 opencv-python
 numpy
 h5py
-gunicorn
 asgiref
 dahpne
