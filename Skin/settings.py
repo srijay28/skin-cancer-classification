@@ -25,7 +25,7 @@ SECRET_KEY = '5#16k!&&r9$&qh$93y^+8lcp27+j)fy2_t2j@$-gs6hb+t_zkm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel/app']
+ALLOWED_HOSTS = ['127.0.0.1','.vercel/app']
 
 ASGI_APPLICATION = 'Skin.asgi.application'
 
