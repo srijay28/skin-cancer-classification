@@ -11,14 +11,8 @@
         {
         if(formObj.t1.value.length==0)
         {
-        alert("Please Enter Username");
+        alert("Please Enter Name");
         formObj.t1.focus();
-        return false;
-        }
-        if(formObj.t2.value.length==0)
-        {
-        alert("Please Enter Password");
-        formObj.t2.focus();
         return false;
         }
         formObj.actionUpdateData.value="update";
@@ -42,19 +36,16 @@
       </div>
       <div class="right-panel">
         <div class="login-box">
-          <h2>Welcome Back!</h2>
+          <h2>Welcome!</h2>
           <p>
-            Don't have an account? <a href="#">Create a new account now</a>,
-            it's FREE! Takes less than a minute.
+            Enter your name to proceed further!
           </p>
           <form name="f1" method="post" action={% url 'UserLoginAction' %} onsubmit="return validate(this);">
             {% csrf_token %}<br/>
-            <input type="username" name="t1" placeholder="Username" />
-            <input type="password" name="t2" placeholder="Password" />
-            <button type="submit" class="login-btn">Login Now</button>
+            <input type="name" name="t1" placeholder="Enter Name" />
+            <button type="submit" class="login-btn">Enter Now</button>
           </form>
 
-          <p><a href="#">Forget Password</a></p>
         </div>
       </div>
     </div>

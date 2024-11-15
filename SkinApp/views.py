@@ -71,9 +71,4 @@ def Upload(request):
 def UserLoginAction(request):
     if request.method == 'POST':
         username = request.POST.get('t1', False)
-        password = request.POST.get('t2', False)
-        if username == 'admin' and password == 'admin':
-            return render(request, 'UserScreen.html', {})
-        else:
-            context = {'data': 'login failed'}
-            return render(request, 'index.html', context)
+        return render(request, 'UserScreen.html', {})
