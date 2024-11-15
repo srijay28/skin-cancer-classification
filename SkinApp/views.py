@@ -52,10 +52,7 @@ def delete_image(request):
 
     print("No image URL provided.")
     return JsonResponse({"status": "error", "message": "No image URL provided"})
-
-def UserLogin(request):
-    if request.method == 'GET':
-       return render(request, 'UserLogin.html', {})    
+  
 
 def index(request):
     if request.method == 'GET':

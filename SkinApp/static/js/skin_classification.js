@@ -1,6 +1,22 @@
 let model;
 const labels = ["Benign", "Malignant"];
 
+// Function to show loading spinner
+function showLoading() {
+  const predictionResult = document.getElementById("prediction-result");
+  predictionResult.innerHTML = `<div class="loading-spinner"></div><p>Analyzing...</p>`;
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+// Function to hide loading spinner
+// function hideLoading() {
+//   const predictionResult = document.getElementById("prediction-result");
+//   predictionResult.innerHTML = ""; // Clear the content after analysis
+// }
+
 // Load the TensorFlow.js model using the model URL from the HTML
 async function loadModel() {
   const modelUrl = document.body.getAttribute("data-model-url");
@@ -12,12 +28,13 @@ async function loadModel() {
   try {
     model = await tf.loadLayersModel(modelUrl);
     console.log("Model loaded successfully!");
-    // After model is loaded, run the prediction if the image is already loaded
+
     const imageElement = document.getElementById("uploaded-image");
+    showLoading();
+    await sleep(1000);
     if (imageElement && imageElement.complete) {
-      predict(); // Call predict if image is already loaded
+      predict();
     } else {
-      // Otherwise, wait for image to load before calling predict
       imageElement.onload = predict;
     }
   } catch (error) {
@@ -33,8 +50,6 @@ async function predict() {
   }
 
   const imageElement = document.getElementById("uploaded-image");
-
-  // Verify if the image element exists and is fully loaded
   if (
     !imageElement ||
     !imageElement.complete ||
@@ -45,22 +60,23 @@ async function predict() {
   }
 
   try {
+    // Show loading spinner
+
     const tensor = tf.browser
       .fromPixels(imageElement)
-      .resizeNearestNeighbor([128, 128]) // Resize to model's input shape
+      .resizeNearestNeighbor([128, 128])
       .toFloat()
-      .div(tf.scalar(255.0)) // Normalize
-      .expandDims(); // Add batch dimension
-    console.log("after tensor thing");
+      .div(tf.scalar(255.0))
+      .expandDims();
+
     const predictions = await model.predict(tensor).data();
-    console.log(predictions);
     const maxIndex = predictions.indexOf(Math.max(...predictions));
     const score = Math.max(...predictions).toFixed(5);
 
     document.getElementById(
       "prediction-result"
     ).textContent = `Prediction: ${labels[maxIndex]} with confidence: ${score}`;
-    console.log("after prediction");
+
     const imageUrl = imageElement.getAttribute("src");
     if (imageUrl) {
       await fetch(`/delete_image?image_url=${encodeURIComponent(imageUrl)}`, {
@@ -73,5 +89,4 @@ async function predict() {
   }
 }
 
-// Wait for the page to load fully before running scripts
 window.onload = loadModel;
