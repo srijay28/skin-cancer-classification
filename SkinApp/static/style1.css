@@ -154,3 +154,15 @@ footer p {
   background-color: #333;
   color: white;
 }
+img.image-container {
+  all: unset; /* Reset all inherited styles */
+  width: 400px; /* Fixed width */
+  height: 200px; /* Fixed height */
+  max-width: none; /* Remove max-width constraints */
+  max-height: none; /* Remove max-height constraints */
+  border: 1px solid #100202;
+  background-color: #f9f9f9;
+  object-fit: contain; /* Maintain aspect ratio inside the box */
+  margin: auto; /* Center the image */
+  display: block; /* Ensure proper block-level layout */
+}
