@@ -188,6 +188,31 @@ img.image-container {
 
 #prediction-result p {
   text-align: center;
-  font-size: 1rem;
+  font-size: 20px;
   color: #100606;
+}
+
+.progress-bar-background {
+  width: 100%; /* Full width of the container */
+  height: 20px; /* Height of the bar */
+  background-color: #f3f3f3; /* Light gray for the background */
+  border: 1px solid #ccc; /* Border to make it distinct */
+  border-radius: 5px; /* Rounded corners */
+  overflow: hidden; /* Clip the fill if it overflows */
+  margin-top: 10px;
+}
+
+.progress-bar-fill {
+  height: 100%; /* Fill the height of the bar */
+  width: 0%; /* Initial width set to 0 */
+  background-color: #3498db; /* Blue color for the bar */
+  transition: width 0.5s ease; /* Smooth transition for filling effect */
+}
+
+#prediction-label {
+  all: unset;
+  font-size: 20px;
+  color: #333; /* Dark text color for readability */
+  margin: 5px 0;
+  text-align: center;
 }

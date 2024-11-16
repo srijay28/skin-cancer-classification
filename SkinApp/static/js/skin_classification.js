@@ -4,7 +4,7 @@ const labels = ["Benign", "Malignant"];
 // Function to show loading spinner
 function showLoading() {
   const predictionResult = document.getElementById("prediction-result");
-  predictionResult.innerHTML = `<div class="loading-spinner"></div><p>Analyzing...</p>`;
+  predictionResult.innerHTML = `<div class="loading-spinner"></div><p class="analyzing">Analyzing...</p>`;
 }
 
 function sleep(ms) {
@@ -61,9 +61,20 @@ async function predict() {
     const maxIndex = predictions.indexOf(Math.max(...predictions));
     const score = Math.max(...predictions).toFixed(5);
 
-    document.getElementById(
-      "prediction-result"
-    ).textContent = `Prediction: ${labels[maxIndex]} with confidence: ${score}`;
+    const predictionResult = document.getElementById("prediction-result");
+    predictionResult.innerHTML = `
+      <p id="prediction-label"></p>
+      <div class="progress-bar-background">
+        <div id="progress-bar" class="progress-bar-fill"></div>
+      </div>
+    `;
+    const predictionLabel = document.getElementById("prediction-label");
+    const progressBar = document.getElementById("progress-bar");
+
+    predictionLabel.textContent = `${labels[maxIndex]} : ${score}`;
+    setTimeout(() => {
+      progressBar.style.width = `${(score * 100).toFixed(2)}%`;
+    }, 50);
 
     const imageUrl = imageElement.getAttribute("src");
     if (imageUrl) {
