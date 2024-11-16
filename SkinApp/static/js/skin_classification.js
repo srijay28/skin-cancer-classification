@@ -11,13 +11,6 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-// Function to hide loading spinner
-// function hideLoading() {
-//   const predictionResult = document.getElementById("prediction-result");
-//   predictionResult.innerHTML = ""; // Clear the content after analysis
-// }
-
-// Load the TensorFlow.js model using the model URL from the HTML
 async function loadModel() {
   const modelUrl = document.body.getAttribute("data-model-url");
   if (!modelUrl) {
@@ -30,38 +23,33 @@ async function loadModel() {
     console.log("Model loaded successfully!");
 
     const imageElement = document.getElementById("uploaded-image");
-    showLoading();
-    await sleep(1000);
-    if (imageElement && imageElement.complete) {
-      predict();
-    } else {
-      imageElement.onload = predict;
+    if (imageElement && imageElement.src && imageElement.src !== "") {
+      imageElement.style.display = "block"; // Show the image container
+      if (imageElement.complete) {
+        predict();
+      } else {
+        imageElement.onload = predict;
+      }
     }
   } catch (error) {
     console.error("Error loading model:", error);
   }
 }
 
-// Function to perform prediction
 async function predict() {
-  if (!model) {
-    console.error("Model not loaded yet!");
+  const imageElement = document.getElementById("uploaded-image");
+
+  // Hide the image container if there's no valid image source
+  if (!imageElement || !imageElement.src || imageElement.naturalWidth === 0) {
+    imageElement.style.display = "none";
+    console.error("No valid image source.");
     return;
   }
 
-  const imageElement = document.getElementById("uploaded-image");
-  if (
-    !imageElement ||
-    !imageElement.complete ||
-    imageElement.naturalWidth === 0
-  ) {
-    console.error("Image failed to load or is broken.");
-    return;
-  }
+  showLoading();
+  await sleep(1000);
 
   try {
-    // Show loading spinner
-
     const tensor = tf.browser
       .fromPixels(imageElement)
       .resizeNearestNeighbor([128, 128])
