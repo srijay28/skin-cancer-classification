@@ -71,7 +71,7 @@ async function predict() {
     const predictionLabel = document.getElementById("prediction-label");
     const progressBar = document.getElementById("progress-bar");
 
-    predictionLabel.textContent = `${labels[maxIndex]} : ${score}`;
+    predictionLabel.textContent = `${labels[maxIndex]} : ${score * 100}%`;
     setTimeout(() => {
       progressBar.style.width = `${(score * 100).toFixed(2)}%`;
     }, 50);
